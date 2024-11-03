@@ -24,3 +24,15 @@ export type TodoList = {
   task: string,
   isDone: boolean
 }
+
+export type FormData = {
+  username: string,
+  email: string,
+  password: string
+}
+
+export type FormErrors = {
+  username?: string,
+  email?: string,
+  password?: string
+}
