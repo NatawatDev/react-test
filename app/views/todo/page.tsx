@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { TodoList } from '../../types'
 import CardTodo from './components/CardTodo'
 import BaseButton from '@/app/components/BaseButton'
@@ -17,11 +17,24 @@ const Todo = () => {
       ...prev,
       {
         id: Date.now(),        
-        task: task
+        task: task,
+        isDone: false
       }
     ])
     setTask('')
   }
+
+  const toggleTask = (taskIndex: number) => {    
+    setTodoList((prev) => {
+      const updatedList = [...prev]
+      updatedList[taskIndex] = { 
+        ...updatedList[taskIndex],
+        isDone: !updatedList[taskIndex].isDone
+      }
+      return updatedList
+    })
+  }
+  
 
   const deleteList = (taskIndex: number) => {
     setTodoList((prev) => {
@@ -46,6 +59,8 @@ const Todo = () => {
                 key={item.id}
                 id={item.id} 
                 task={item.task}
+                isDone={item.isDone}
+                toggleTask={() => toggleTask(index)}
                 deleteList={() => deleteList(index)} 
               />
             ))

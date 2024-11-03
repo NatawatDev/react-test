@@ -15,10 +15,12 @@ export type TaskButton = {
 }
 
 export interface CardTodoPropsType extends TodoList {
-  deleteList: (index:number) => void
+  deleteList: () => void
+  toggleTask: () => void
 }
 
 export type TodoList = {
   id: number | null,
-  task: string
+  task: string,
+  isDone: boolean
 }
