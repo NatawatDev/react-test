@@ -18,17 +18,16 @@ const displayHeader: TableDataHeader[] = [
 
 const SearchData = () => {
   const [searchValue, setSearchValue] = useState('')
-  const [users, setUsers] = useState(mockUsers)
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value)
   }
 
   const filteredUsers = useMemo(() => {
-    return users.filter(item =>
+    return mockUsers.filter(item =>
       item.name.toLowerCase().includes(searchValue.toLowerCase())
     )
-  }, [users, searchValue])
+  }, [searchValue])
 
   return (
     <div className='container mx-auto p-4'>

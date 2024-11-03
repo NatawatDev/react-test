@@ -1,6 +1,6 @@
 export type BaseButtonPropsType = {
   title?: string,
-  actions?: (() => void) | ((...args: any[]) => void),
+  actions?: (() => void),
   isDisable? : boolean
 }
 
